@@ -30,6 +30,8 @@ local isep
 local right_sep
 local left_sep
 
+local show_index = false
+
 local util = require('tabline.util')
 
 local shown_items = {}
@@ -76,13 +78,17 @@ local function build_item(bufnr, n)
     name = vim.fn.fnamemodify(name, ':t')
   end
 
+  if show_index then
+    name = n .. ' ' .. name
+  end
+
   local item_hilight
 
   if vim.api.nvim_buf_get_option(bufnr, 'modified') then
     if bufnr == vim.api.nvim_get_current_buf() then
-    item_hilight = '%#TablineNvimM# '
+      item_hilight = '%#TablineNvimM# '
     else
-    item_hilight = '%#TablineNvimMNC# '
+      item_hilight = '%#TablineNvimMNC# '
     end
   elseif bufnr == vim.api.nvim_get_current_buf() then
     item_hilight = '%#TablineNvimA# '
@@ -334,6 +340,7 @@ function M.setup(opts)
   opts = opts or {}
   local seps = separators[opts.separator or 'arrow']
   local iseps = i_separators[opts.iseparator or 'arrow']
+  show_index = opts.show_index or show_index
   isep = iseps[1]
   right_sep = seps[1]
   left_sep = seps[2]
