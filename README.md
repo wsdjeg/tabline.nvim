@@ -27,3 +27,12 @@ require('tabline').setup(
     }
 )
 ```
+
+## Highlight group
+
+```
+TablineNvimA
+TablineNvimB
+TablineNvimM
+TablineNvimMNC
+```
