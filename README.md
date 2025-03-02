@@ -17,15 +17,19 @@ require('plug').add({
 })
 ```
 
-## Options
-
+## Configuration
 
 ```lua
-require('tabline').setup(
-    {
-        show_index = false, -- display index, disbale by default.
-    }
-)
+require('tabline').setup({
+  show_index = false, -- display index, disbale by default.
+})
+
+-- use leader + number for buffer jump
+for i = 1, 9 do
+  vim.keymap.set('n', '<leader>' .. i, function()
+    require('tabline').jump(i)
+  end, { silent = true })
+end
 ```
 
 ## Highlight group
