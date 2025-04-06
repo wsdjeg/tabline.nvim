@@ -4,6 +4,17 @@
 
 ![Image](https://github.com/user-attachments/assets/4a6e39cb-0e16-4d29-be7a-3e3d4a4316cf)
 
+
+<!-- vim-markdown-toc GFM -->
+
+* [Install](#install)
+* [Configuration](#configuration)
+* [Highlight group](#highlight-group)
+* [Self-Promotion](#self-promotion)
+* [Feedback](#feedback)
+
+<!-- vim-markdown-toc -->
+
 ## Install
 
 With [nvim-plug](https://github.com/wsdjeg/nvim-plug):
@@ -50,3 +61,16 @@ TablineNvimB
 TablineNvimM
 TablineNvimMNC
 ```
+
+## Self-Promotion
+
+Like this plugin? Star the repository on
+GitHub.
+
+Love this plugin? Follow [me](https://wsdjeg.net/) on
+[GitHub](https://github.com/wsdjeg) and
+[Twitter](http://twitter.com/wsdtty).
+
+## Feedback
+
+If you encounter any bugs or have suggestions, please file an issue in the [issue tracker](https://github.com/wsdjeg/tabline.nvim/issues)
