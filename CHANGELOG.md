@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/wsdjeg/tabline.nvim/compare/v1.1.0...v1.1.1) (2025-11-08)
+
+
+### Bug Fixes
+
+* fix tabpage jump ([54a29a3](https://github.com/wsdjeg/tabline.nvim/commit/54a29a3c0c8e3aad23198651e9a63acda6fdb193))
+
 ## [1.1.0](https://github.com/wsdjeg/tabline.nvim/compare/v1.0.0...v1.1.0) (2025-03-16)
 
 
