@@ -7,11 +7,11 @@
 
 <!-- vim-markdown-toc GFM -->
 
-* [Install](#install)
-* [Configuration](#configuration)
-* [Highlight group](#highlight-group)
-* [Self-Promotion](#self-promotion)
-* [Feedback](#feedback)
+- [Install](#install)
+- [Configuration](#configuration)
+- [Highlight group](#highlight-group)
+- [Self-Promotion](#self-promotion)
+- [Feedback](#feedback)
 
 <!-- vim-markdown-toc -->
 
@@ -68,8 +68,7 @@ Like this plugin? Star the repository on
 GitHub.
 
 Love this plugin? Follow [me](https://wsdjeg.net/) on
-[GitHub](https://github.com/wsdjeg) and
-[Twitter](http://twitter.com/wsdtty).
+[GitHub](https://github.com/wsdjeg).
 
 ## Feedback
 
