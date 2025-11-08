@@ -111,7 +111,7 @@ local function build_tab_item(tabid)
 
   local nr = vim.api.nvim_tabpage_get_number(tabid)
 
-  local tablineat = '%' .. nr .. '@SpaceVim#layers#core#tabline#jump@'
+  local tablineat = '%' .. nr .. '@v:lua.__nvim_tabline.jump@'
 
   if name == '' then
     name = 'No Name'
