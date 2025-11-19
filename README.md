@@ -1,15 +1,20 @@
 # tabline.nvim
 
-`tabline.nvim` is a simple tabline plugin for Neovim.
+_tabline.nvim_ is a simple tabline plugin for Neovim.
+
+[![GitHub License](https://img.shields.io/github/license/wsdjeg/tabline.nvim)](LICENSE)
+[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/wsdjeg/tabline.nvim)](https://github.com/wsdjeg/tabline.nvim/issues)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/wsdjeg/tabline.nvim)](https://github.com/wsdjeg/tabline.nvim/commits/master/)
+[![GitHub Release](https://img.shields.io/github/v/release/wsdjeg/tabline.nvim)](https://github.com/wsdjeg/tabline.nvim/releases)
 
 ![Image](https://github.com/user-attachments/assets/4a6e39cb-0e16-4d29-be7a-3e3d4a4316cf)
-
 
 <!-- vim-markdown-toc GFM -->
 
 - [Install](#install)
 - [Configuration](#configuration)
 - [Highlight group](#highlight-group)
+    - [Themes](#themes)
 - [Self-Promotion](#self-promotion)
 - [Feedback](#feedback)
 
@@ -55,12 +60,18 @@ end, { silent = true })
 
 ## Highlight group
 
-```
-TablineNvimA
-TablineNvimB
-TablineNvimM
-TablineNvimMNC
-```
+| Highlight      | description                                   |
+| -------------- | --------------------------------------------- |
+| TablineNvimA   | highlight of current buffer                   |
+| TablineNvimB   | highlight of other buffer                     |
+| TablineNvimM   | highlight of current buffer if it is modified |
+| TablineNvimMNC | highlight of other buffer if it is modified   |
+
+### Themes
+
+| theme | colorscheme | file                         |
+| ----- | ----------- | ---------------------------- |
+| `one` | vim-one     | `lua/tabline/themes/one.lua` |
 
 ## Self-Promotion
 
