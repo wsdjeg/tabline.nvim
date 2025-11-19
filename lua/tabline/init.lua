@@ -7,6 +7,8 @@
 
 local M = {}
 
+local devicon_hls = {}
+
 -- https://github.com/ryanoasis/powerline-extra-symbols
 
 local separators = {
@@ -67,6 +69,8 @@ local function reverse_table(t)
   return tmp
 end
 
+local get_icon
+
 local function build_item(bufnr, n)
   local name = vim.fn.bufname(bufnr)
 
@@ -77,27 +81,43 @@ local function build_item(bufnr, n)
   else
     name = vim.fn.fnamemodify(name, ':t')
   end
-
-  if show_index then
-    name = n .. ' ' .. name
-  end
-
   local item_hilight
 
   if vim.api.nvim_buf_get_option(bufnr, 'modified') then
     if bufnr == vim.api.nvim_get_current_buf() then
-      item_hilight = '%#TablineNvimM# '
+      item_hilight = 'TablineNvimM'
     else
-      item_hilight = '%#TablineNvimMNC# '
+      item_hilight = 'TablineNvimMNC'
     end
   elseif bufnr == vim.api.nvim_get_current_buf() then
-    item_hilight = '%#TablineNvimA# '
+    item_hilight = 'TablineNvimA'
   else
-    item_hilight = '%#TablineNvimB# '
+    item_hilight = 'TablineNvimB'
+  end
+
+  if show_index then
+    if get_icon then
+      local icon, hl = get_icon(name)
+      if not icon or not hl then
+        name = n .. ' ' .. name
+      else
+        if not devicon_hls[item_hilight .. hl] then
+          local info = vim.api.nvim_get_hl(0, { name = item_hilight })
+          local icon_hl = vim.api.nvim_get_hl(0, { name = hl })
+          vim.api.nvim_set_hl(0, item_hilight .. hl, {
+            fg = icon_hl.fg,
+            bg = info.bg,
+          })
+        end
+        name = n .. '%#' .. item_hilight .. hl .. '# ' .. icon .. ' %#' .. item_hilight .. '#' .. name
+      end
+    else
+      name = n .. ' ' .. name
+    end
   end
 
   return {
-    str = item_hilight .. tablineat .. ' ' .. name .. ' ',
+    str = '%#' .. item_hilight .. '# ' .. tablineat .. ' ' .. name .. ' ',
     bufnr = bufnr,
     len = #name + 4,
     pin = false,
@@ -487,6 +507,12 @@ function M.setup(opts)
 end
 
 function M.get()
+  if not get_icon then
+    local ok, devicon = pcall(require, 'nvim-web-devicons')
+    if ok then
+      get_icon = devicon.get_icon
+    end
+  end
   local tablinestr = ''
   shown_items = get_show_items()
   local preview_item
