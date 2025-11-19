@@ -28,6 +28,14 @@ local i_separators = {
   ['nil'] = { '', '' },
 }
 
+-- # types:
+-- # 0: 1 ➛ ➊
+-- # 1: 1 ➛ ➀
+-- # 2: 1 ➛ ⓵
+-- # 3: 1 ➛ ¹
+-- # 4: 1 ➛ 1
+local index_type = 4
+
 local isep
 local right_sep
 local left_sep
@@ -96,6 +104,7 @@ local function build_item(bufnr, n)
   end
 
   if show_index then
+    n = util.get_index_icon(n, index_type)
     if get_icon then
       local icon, hl = get_icon(name)
       if not icon or not hl then
@@ -109,7 +118,22 @@ local function build_item(bufnr, n)
             bg = info.bg,
           })
         end
-        name = n .. '%#' .. item_hilight .. hl .. '# ' .. icon .. ' %#' .. item_hilight .. '#' .. name
+        local index_sep
+        if index_type <= 2 then
+            index_sep = '  '
+        else
+            index_sep = ' '
+        end
+        name = n
+          .. '%#'
+          .. item_hilight
+          .. hl
+          .. '#' .. index_sep
+          .. icon
+          .. ' %#'
+          .. item_hilight
+          .. '#'
+          .. name
       end
     else
       name = n .. ' ' .. name
@@ -361,6 +385,7 @@ function M.setup(opts)
   local seps = separators[opts.separator or 'arrow']
   local iseps = i_separators[opts.iseparator or 'arrow']
   show_index = opts.show_index or show_index
+  index_type = opts.index_type or index_type
   isep = iseps[1]
   right_sep = seps[1]
   left_sep = seps[2]
@@ -548,11 +573,10 @@ function M.get()
   return tablinestr
 end
 
-
 function M.def_colors()
   local ok, t = pcall(require, 'tabline.themes.' .. vim.g.colors_name)
   if not ok then
-      t = require('tabline.themes.one')
+    t = require('tabline.themes.one')
   end
 
   vim.api.nvim_set_hl(0, 'TablineNvimA', {

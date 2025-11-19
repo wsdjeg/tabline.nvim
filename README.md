@@ -40,6 +40,13 @@ require('plug').add({
 ```lua
 require('tabline').setup({
   show_index = false, -- display index, disbale by default.
+  -- # types, default is 4
+  -- # 0: 1 ➛ ➊
+  -- # 1: 1 ➛ ➀
+  -- # 2: 1 ➛ ⓵
+  -- # 3: 1 ➛ ¹
+  -- # 4: 1 ➛ 1
+  index_type = 4,
 })
 
 -- use leader + number for buffer jump

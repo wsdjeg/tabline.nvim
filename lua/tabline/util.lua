@@ -101,5 +101,48 @@ function M.hi_separator(a, b)
   M.hi(hi_b_a)
 end
 
+-- https://github.com//wsdjeg/SpaceVim/blob/eed9d8f14951d9802665aa3429e449b71bb15a3a/autoload/SpaceVim/api/messletters.vim#L29
+
+-- # types:
+-- # 0: 1 ➛ ➊
+-- # 1: 1 ➛ ➀
+-- # 2: 1 ➛ ⓵
+-- # 3: 1 ➛ ¹
+-- # 4: 1 ➛ 1
+function M.get_index_icon(n, t)
+  if t == 0 then
+    if n == 0 then
+      return vim.fn.nr2char(9471)
+    elseif n >= 1 and n <= 10 then
+      return vim.fn.nr2char(10102 + n - 1)
+    elseif n >= 11 and n <= 20 then
+      return vim.fn.nr2char(9451 + n - 11)
+    else
+      return ''
+    end
+  elseif t == 1 then
+    if n == 0 then
+      return vim.fn.nr2char(9450)
+    elseif n >= 1 and n <= 20 then
+      return vim.fn.nr2char(9311 + n)
+    else
+      return ''
+    end
+  elseif t == 2 then
+    if n >= 1 and n <= 10 then
+      return vim.fn.nr2char(9461 + n - 1)
+    else
+      return ''
+    end
+  elseif t == 3 then
+    local nums = { 8304, 185, 178, 179, 8308, 8309, 8310, 8311, 8312, 8313 }
+    if n >= 1 and n <= 10 then
+      return vim.fn.nr2char(nums[n])
+    end
+    return ''
+  else
+    return n
+  end
+end
 
 return M
