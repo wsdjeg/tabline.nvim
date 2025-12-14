@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/wsdjeg/tabline.nvim/compare/v1.2.0...v1.3.0) (2025-12-14)
+
+
+### Features
+
+* support neoment room ([427cb9d](https://github.com/wsdjeg/tabline.nvim/commit/427cb9d845baab24556890b9356a33943fd4802c))
+
 ## [1.2.0](https://github.com/wsdjeg/tabline.nvim/compare/v1.1.0...v1.2.0) (2025-11-23)
 
 
