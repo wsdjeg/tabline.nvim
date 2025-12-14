@@ -105,7 +105,9 @@ local function build_item(bufnr, n)
 
   if show_index then
     n = util.get_index_icon(n, index_type)
-    if get_icon then
+    if vim.startswith(vim.api.nvim_buf_get_name(bufnr), 'neoment://room/!') then
+      name = n .. '  ' .. require('neoment.icon').room .. ' ' .. name
+    elseif get_icon then
       local icon, hl = get_icon(name)
       if not icon or not hl then
         name = n .. ' ' .. name
@@ -120,15 +122,16 @@ local function build_item(bufnr, n)
         end
         local index_sep
         if index_type <= 2 then
-            index_sep = '  '
+          index_sep = '  '
         else
-            index_sep = ' '
+          index_sep = ' '
         end
         name = n
           .. '%#'
           .. item_hilight
           .. hl
-          .. '#' .. index_sep
+          .. '#'
+          .. index_sep
           .. icon
           .. ' %#'
           .. item_hilight
